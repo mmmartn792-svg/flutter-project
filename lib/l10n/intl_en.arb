@@ -1,0 +1,41 @@
+{
+"titleLogin": "Sign In",
+"title2login": "Enter the phone number associated with your account"
+,"PhoneNumber":"Phone Number"
+,"validate1":"Please enter phone number",
+"forgetPassword":"Forgot Password?",
+"password":"Password",
+"validate2":"Please enter password",
+"newAccountget":"Or get a ",
+"newAccount"    :"new account"
+,
+"createAccount":"Create New Account",
+"name1":"First Name",
+"name2":"Last Name",
+"validateFirstName":"Please Enter First Name",
+"validateSecondName":"Please Enter Last Name",
+"phoneNumber": "phoneNumber",
+"validatephone": "Please Enter PhoneNumber ",
+"confirmpassword": " confirmpassword",
+"Validateconfirmpass":"Please confirmpassword",
+"date":"Enter date Birthday",
+"validateDAte":"Please Enter dateBirthday",
+"renterOrOwner":"Please Enter role ",
+"renter":"renter",
+"owner":"owner",
+"validateRole":"Please Enter your Role",
+"enterYourImage":"Enter Personal photo",
+"imagId":"Enter Personal photo ID",
+"error":"Error",
+"dec":"Please upload the required images ",
+"createAcount":"Create account",
+"getApartment":"The Apartments were Successfully loaded",
+"homePage":"HomePage",
+"awesaTitle":"Log out",
+"awsdec": "Are you sure you want to log out?",
+"noApartment":"There apartments to display",
+"choselan":"please select a language",
+"darkAndLang":"language and darke Mode",
+"masenger": "please create Owner`s account"
+
+}
