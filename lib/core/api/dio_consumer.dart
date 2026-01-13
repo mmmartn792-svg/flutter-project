@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:projectq/core/api/api_consumer.dart';
 import 'package:projectq/core/api/api_interceptors.dart';
 import 'package:projectq/core/api/end_ponits.dart';
+import 'package:projectq/core/errors/exceptions.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;
@@ -37,7 +38,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response.data;
     } on DioException catch (e) {
-      _handleDioError(e);
+      handleDioExceptions(e);
     }
   }
 
@@ -55,7 +56,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response.data;
     } on DioException catch (e) {
-      _handleDioError(e);
+      handleDioExceptions(e);
     }
   }
 
@@ -74,7 +75,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response.data;
     } on DioException catch (e) {
-      _handleDioError(e);
+      handleDioExceptions(e);
     }
   }
 
@@ -93,9 +94,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response.data;
     } on DioException catch (e) {
-      _handleDioError(e);
+      handleDioExceptions(e);
     }
   }
-
-  void _handleDioError(DioException e) {}
 }

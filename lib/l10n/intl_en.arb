@@ -36,6 +36,74 @@
 "noApartment":"There apartments to display",
 "choselan":"please select a language",
 "darkAndLang":"language and darke Mode",
-"masenger": "please create Owner`s account"
+"masenger": "please create Owner`s account",
+"btnCancelText":"Cansel",
+"btnOkText":"Ok",
+"damas":"Damascus City",
+"qanawat":"al-Qanawt",
+"medan":"al-meidan",
+"babTuma":"Bab Tuma",
+"sarojah":"Saroujah",
+"douma":"Douma",
+"AlTall":"Al-Tall",
+"AlQutayfah":"Al-Qutayfah",
+"AleppoCity":"Aleppo City","Manbij":"Manbij","Azaz":"Azaz","IdlibCity":"Idlib City","MaarratalNuuman":"Maarrat al-Nuuman","HomsCity":"Homs City","AlRastan":"Al-Rastan","HamaCity":"Hama City","Masyaf":"Masyaf","LatakiaCity":"Latakia City",
+"Jableh":"Jableh",
+"TartusCity":"Tartus City","Baniyas":"Baniyas","DeirezZorCity":"Deir ez-Zor City","AlMayadin":"Al-Mayadin","RaqqaCity":"Raqqa City","AlThawrah":"Al-Thawrah"
+,"laprice":"Price ($)","validatorpric":"please Enter price",
+"Addtitl":"Add Apartment",
+"AddPhotos":"Add Photos",
+"ADDphoto":"Photo Picker Placeholder",
+"city":"City",
+"validatorcity":"please enter city","validatorarea":" please Enter area",
+"WiFi":"WiFi","AirConditioning":"Air Conditioning"
+,"SwimmingPool":"Swimming Pool",
+"Gym":"Gym","Parking":"Parking","PetFriendly":"Pet Friendly",
+"BreakfastIncluded":"Breakfast Included","AirportShuttle":"Airport Shuttle"
+,"Spa":"Spa","Restaurant":"Restaurant","Bar":"Bar","LaundryService":"Laundry Service","RoomService":"Room Service","HourFrontDesk":"24-Hour Front Desk","BusinessCenter":"Business Center","ConferenceRooms":"Conference Rooms",
+"tit":"please Enter title","dest":"please Enter description","typeapar":"type of rental","daily":"daily","monthly":"monthly","yearly":"yearly"
+,"hiiiii":"Target segment","family":"family","single":"single","students":"students","employees":"employees"
+,"floor":"select the floor","land":"land",
+"first":" first","second":"second ","third":" third","fourth":"fourth  ","fifth":" fifth","nroom":"Enter number rooms","room1":"one room","room2":"two room"
+
+,"room3":"three room","room4":"four room","room5":"fife room","Eroor":"Eroor","des":"please Enter allAmenities","des2":"please Enter images Apartment","amanty":"Select available services"
+,"Booking":"Booking"
+,"date1":"ُEnter Date Start Booking Date ","date2":"Enter Date End Booking date","book":"Booking","dark":"Dark Mode","rent":"please create renter Account"
+,"About":"About this place","About1":"Beautiful modern apartment in the heart of",
+"About2":"Features stunning city views, high-end finishes, and easy access to top restaurants and attractions.","public":" Genral Information","numberapa":"number apartment : #","whatAmen":"What does this place offer"
+
+,"rever":"Reviews","All":"View All","bookNow":"Booking Now","name": "Michael Chen",
+      
+      "text":
+   " Amazing apartment! Clean, modern, and perfectly located. Sarah was a wonderful host and very responsive. Highly recommend!",
+      "date11": "December 2024",
+"Damascus":"Damascus",
+    "RifDimashq":"Rif Dimashq",
+   "Aleppo":"Aleppo",  "Idlib": "Idlib",
+     
+   "Homs":"Homs",
+   "Hama":"Hama",
+    "Latakia":"Latakia",
+  "Tartus":"Tartus","favorites":"Favorites",
+  "DeirezZor":"Deir ez-Zor",
+    "Raqqa":"Raqqa",
+   "AlHasakah":"Al-Hasakah","details":"Notification details",
+
+   "Daraa":"Daraa","end":"ended",
+    "AsSuwayda":"As-Suwayda",
+    "Quneitra":"Quneitra","Bookings":"My Bookings","invalidDateRange":"please Enter DAte correctly","refresh":"Try again ","MyBookings":"My Bookings","noBookings":"No reservations currently available"
+,"errorinBookings":"An error occurred during loading ","again":"Try again","loading":"loading Bookings","confirmcancel":" Confirm Cancellation","confirmtt":"Are you sure about cancelling the reservation?"
+,"backed":"backed","canceleBookings":"Cancel Bookings","modifyDate":"Change Booking date","myApartments":"My Apartments","noApartments":"You have no Apartments"
+,"eror":"An error occurred in loading the apartments"
+,"loadings":"Apartments are being  loaded ","aproved":"Aproved","inWiting":"Witing","disapproved":"Disapproved","bookingsForApartment":"Bookings for this apartment","ok":"Agree","disagree":"Disagree"
+,"val":"The end date must be before the start date","val2":"the start date must be different the end date ","bookingsw":"Booking Waiting ","messagNot":" Your reservation has been successfully confirmed. You'll receive a confirmation email shortly with all the details."
+,"detailbooking":"Booking Details","Property":"Property","Dates":"Dates","total":"Total Paid","View":"View Bookings","backHome":"Back to Home","filterapr":"Apartment filtering"
+,"province":"Province","area":"area","searche":"Search","ennter":"Specify the required specifications"
+,"ar":"en","now":"Now","minute":"Minute","hour":"Hour","day":"Day","noNotification":"No Notification","notification":"Notifications"
+,"Alll":"All","notread":"Not Read","err":"An error occurred while fetching notifications .","message":"message","newstate":"New Status","RAting":"Rating Apartment","Stars":"How would you rate this apartment?","write":"Write your comment:"
+,"opinion":"....Write your opinion for apartment ","comment":"please enter comment"
+,"SendComent":"Send Comment","whatPeopleSay":"what say people","basedOn":"based On Experiences","reviews":"Number reviews"
+
+
 
 }

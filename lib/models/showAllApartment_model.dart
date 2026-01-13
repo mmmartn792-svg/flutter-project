@@ -3,39 +3,87 @@
 import 'package:projectq/core/api/end_ponits.dart';
 
 class ApartmentModel {
-  final int id;
-  final String title;
-  final String province;
-  final String price;
-  final String city;
-  final List<String> phones;
-  final List<String> amenities;
-
-  // بالمتر المربع
-  final String photoOfTheApartment; // قائمة من روابط الصور
+  final int idApartment;
+  final String title; //
+  final String price; //
+  final String province; //
+  final String city; //
+  final List<String> amenities; //
+  final String phone;
+  final List<String> images; //
+  final String area; //
+  final String categoryOfRentType;
+  final int? roomsNumber;
+  final String floor;
 
   ApartmentModel({
-    required this.id,
-    required this.title,
-    required this.province,
+    required this.idApartment,
+    required this.title, //
     required this.price,
+    required this.province,
     required this.city,
-    required this.phones,
     required this.amenities,
-    required this.photoOfTheApartment,
+    required this.phone,
+    required this.images,
+    required this.area,
+    required this.categoryOfRentType,
+    this.roomsNumber,
+    required this.floor,
   });
 
-  /// دالة مصنعية لإنشاء كائن ApartmentModel من JSON
   factory ApartmentModel.fromJson(Map<String, dynamic> json) {
+    final id = int.tryParse(json[ApiKey.id_apartment].toString()) ?? 0;
+    final rooms = json[ApiKey.rooms_number] != null
+        ? int.tryParse(json[ApiKey.rooms_number].toString())
+        : null;
+
     return ApartmentModel(
-      id: json[ApiKey.id] as int,
-      title: json[ApiKey.title] as String,
-      province: json[ApiKey.province] as String,
-      price: json[ApiKey.price],
-      city: json[ApiKey.city] as String,
-      phones: List<String>.from(json[ApiKey.phones1] ?? []),
-      amenities: List<String>.from(json[ApiKey.amenities1] ?? []),
-      photoOfTheApartment: json[ApiKey.photoOfApartment] as String,
+      idApartment: id,
+
+      title: json[ApiKey.title]?.toString() ?? "",
+      province: json[ApiKey.province]?.toString() ?? "",
+      price: json[ApiKey.price]?.toString() ?? "",
+      city: json[ApiKey.city]?.toString() ?? "",
+
+      phone: json[ApiKey.phones1]?.toString() ?? "",
+      amenities:
+          (json[ApiKey.amenities1] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          [],
+      images:
+          (json['images'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          [],
+      area: json[ApiKey.area]?.toString() ?? "",
+      categoryOfRentType: json[ApiKey.categoryOfRentType]?.toString() ?? "",
+      floor: json[ApiKey.floor]?.toString() ?? "",
+      roomsNumber: rooms,
+    );
+  }
+}
+
+class ApartmentListResponse {
+  final bool success;
+  final String message;
+  final List<ApartmentModel> data;
+
+  const ApartmentListResponse({
+    required this.success,
+    required this.message,
+    required this.data,
+  });
+
+  factory ApartmentListResponse.fromJson(Map<String, dynamic> json) {
+    return ApartmentListResponse(
+      success: json[ApiKey.success] ?? false,
+      message: json[ApiKey.message]?.toString() ?? "",
+      data:
+          (json[ApiKey.data] as List<dynamic>?)
+              ?.map((apartmentJson) => ApartmentModel.fromJson(apartmentJson))
+              .toList() ??
+          [],
     );
   }
 }

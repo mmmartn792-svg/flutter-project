@@ -29,7 +29,7 @@ class Customcard extends StatelessWidget {
                   children: [
                     Positioned(
                       child: Image.network(
-                        apartment.photoOfTheApartment,
+                        apartment.images[1],
                         height: 100,
                         width: 100,
                       ),

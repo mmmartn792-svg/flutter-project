@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:projectq/cache/cache_helper.dart';
 import 'package:projectq/core/api/end_ponits.dart';
 import 'package:projectq/cubit/user_cubit.dart';
+import 'package:projectq/generated/l10n.dart';
 import 'package:projectq/screen/home.dart';
 import 'package:projectq/widget/classAmenty.dart';
 import 'package:projectq/widget/customboton.dart';
@@ -37,23 +38,50 @@ class _AddapartmentState extends State<Addapartment> {
     super.dispose();
   }
 
-  final List<Amenity> _allAmenities = [
-    const Amenity(id: 1, name: 'WiFi'),
-    const Amenity(id: 2, name: 'Air Conditioning'),
-    const Amenity(id: 3, name: 'Swimming Pool'),
-    const Amenity(id: 4, name: 'Gym'),
-    const Amenity(id: 5, name: 'Parking'),
-    const Amenity(id: 6, name: 'Pet Friendly'),
-    const Amenity(id: 7, name: 'Breakfast Included'),
-    const Amenity(id: 8, name: 'Airport Shuttle'),
-    const Amenity(id: 9, name: 'Spa'),
-    const Amenity(id: 10, name: 'Restaurant'),
-    const Amenity(id: 11, name: 'Bar'),
-    const Amenity(id: 12, name: 'Laundry Service'),
-    const Amenity(id: 13, name: 'Room Service'),
-    const Amenity(id: 14, name: '24-Hour Front Desk'),
-    const Amenity(id: 15, name: 'Business Center'),
-    const Amenity(id: 16, name: 'Conference Room'),
+  late final List<Amenity> cities = [
+    Amenity(id: 1, name: S.of(context).damas),
+    Amenity(id: 2, name: S.of(context).qanawat),
+    Amenity(id: 3, name: S.of(context).medan),
+    Amenity(id: 4, name: S.of(context).babTuma),
+    Amenity(id: 5, name: S.of(context).sarojah),
+    Amenity(id: 6, name: S.of(context).douma),
+    Amenity(id: 7, name: S.of(context).AlTall),
+    Amenity(id: 8, name: S.of(context).AlQutayfah),
+    Amenity(id: 9, name: S.of(context).AleppoCity),
+    Amenity(id: 10, name: S.of(context).Manbij),
+    Amenity(id: 11, name: S.of(context).Azaz),
+    Amenity(id: 12, name: S.of(context).IdlibCity),
+    Amenity(id: 13, name: S.of(context).MaarratalNuuman),
+    Amenity(id: 14, name: S.of(context).HomsCity),
+    Amenity(id: 15, name: S.of(context).AlRastan),
+    Amenity(id: 16, name: S.of(context).HamaCity),
+    Amenity(id: 17, name: S.of(context).Masyaf),
+    Amenity(id: 18, name: S.of(context).LatakiaCity),
+    Amenity(id: 19, name: S.of(context).Jableh),
+    Amenity(id: 20, name: S.of(context).TartusCity),
+    Amenity(id: 21, name: S.of(context).Baniyas),
+    Amenity(id: 22, name: S.of(context).DeirezZorCity),
+    Amenity(id: 23, name: S.of(context).AlMayadin),
+    Amenity(id: 24, name: S.of(context).RaqqaCity),
+    Amenity(id: 25, name: S.of(context).AlThawrah),
+  ];
+  late final List<Amenity> _allAmenities = [
+    Amenity(id: 1, name: S.of(context).WiFi),
+    Amenity(id: 2, name: S.of(context).AirConditioning),
+    Amenity(id: 3, name: S.of(context).SwimmingPool),
+    Amenity(id: 4, name: S.of(context).Gym),
+    Amenity(id: 5, name: S.of(context).Parking),
+    Amenity(id: 6, name: S.of(context).PetFriendly),
+    Amenity(id: 7, name: S.of(context).BreakfastIncluded),
+    Amenity(id: 8, name: S.of(context).AirportShuttle),
+    Amenity(id: 9, name: S.of(context).Spa),
+    Amenity(id: 10, name: S.of(context).Restaurant),
+    Amenity(id: 11, name: S.of(context).Bar),
+    Amenity(id: 12, name: S.of(context).LaundryService),
+    Amenity(id: 13, name: S.of(context).RoomService),
+    Amenity(id: 14, name: S.of(context).HourFrontDesk),
+    Amenity(id: 15, name: S.of(context).BusinessCenter),
+    Amenity(id: 16, name: S.of(context).ConferenceRooms),
   ];
   List<int> _selectedAmenityIds = [];
   List<String> phoneNumber = [];
@@ -80,379 +108,43 @@ class _AddapartmentState extends State<Addapartment> {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(title: Text("إضافة شقة")),
+          appBar: AppBar(title: Text(S.of(context).Addtitl)),
           body: Form(
             key: addApartment,
             child: ListView(
               children: [
-                Customtextform(
-                  hint: "الرجاء ادخال العنوان",
-                  controller: title,
-                  onChanged: (val) {
-                    if (val.isNotEmpty) {
-                      context.read<UserCubit>().setTitle(val);
-                    }
-                  },
-                  validator: (textValue) {
-                    if (textValue == null || textValue.isEmpty) {
-                      return 'الرجاء إدخال العنوان';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
-                Customtextform(
-                  hint: "الرجاء ادخال الوصف",
-                  controller: description,
-                  onChanged: (val) {
-                    if (val.isNotEmpty) {
-                      context.read<UserCubit>().setDescription(val);
-                    }
-                  },
-                  validator: (textValue) {
-                    if (textValue == null || textValue.isEmpty) {
-                      return 'الرجاء إدخال الوصف';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 15),
-                Customtextform(
-                  hint: "الرجاء ادخال السعر",
-                  controller: price,
-                  onChanged: (val) {
-                    context.read<UserCubit>().setPrice(val);
-                  },
-                  keyboardType: TextInputType.number,
-                  validator: (textValue) {
-                    if (textValue == null || textValue.isEmpty) {
-                      return 'الرجاء إدخال السعر';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 15),
-
-                SizedBox(height: 15),
-                Customtextform(
-                  hint: "الرجاء ادخال المساحة",
-                  controller: area,
-                  onChanged: (val) {
-                    final areaValue = int.tryParse(val) ?? 0;
-                    context.read<UserCubit>().setArea(areaValue);
-                  },
-                  keyboardType: TextInputType.number,
-                  validator: (textValue) {
-                    if (textValue == null || textValue.isEmpty) {
-                      return 'الرجاء إدخال المساحة';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 15),
-                Customtextform(
-                  hint: "الرجاء ادخال رقم الهاتف",
-                  controller: number1,
-                  keyboardType: TextInputType.number,
-                  onChanged: (val) {
-                    if (val.isNotEmpty) {
-                      phoneNumber.add(val);
-                      context.read<UserCubit>().setPhones(phoneNumber);
-                    }
-                  },
-                  validator: (textValue) {
-                    if (textValue == null || textValue.isEmpty) {
-                      return 'الرجاء إدخال رقم الهاتف';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 15),
-                Customtextform(
-                  hint: "الرجاء ادخال رقم الموبايل ",
-                  controller: number2,
-                  keyboardType: TextInputType.number,
-                  onChanged: (val) {
-                    phoneNumber.add(val);
-                    context.read<UserCubit>().setPhones(phoneNumber);
-                  },
-                  validator: (textValue) {
-                    if (textValue == null || textValue.isEmpty) {
-                      return 'الرجاء إدخال رقم الموبايل';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 15),
-                DropdownButtonFormField<String>(
-                  hint: Text("حدد نوع الايجار"),
-
-                  items: [
-                    DropdownMenuItem<String>(
-                      value: 'يومي', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('يومي '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'شهري',
-                      child: Text('شهري'),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'سنوي', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('سنوي '), // النص الذي سيظهر للمستخدم
-                    ),
-                  ],
-                  onChanged: (String? value) {
-                    if (value != null) {
-                      context.read<UserCubit>().setRentType(value);
-                    }
-                  },
-                  validator: (val) {
-                    if (val == null) {
-                      return "الرجاء تحديد نوع الايجار";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
-                DropdownButtonFormField<String>(
-                  hint: Text("حدد رقم الطابق"),
-
-                  items: [
-                    DropdownMenuItem<String>(
-                      value: 'land', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('ارضي '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'first',
-                      child: Text('طابق اول'),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'second', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('طابق ثاني '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'third', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('طابق ثالث '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'fourth', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('طابق رابع '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'fifth', // القيمة الفعلية التي سيتم حفظها
-                      child: Text('طابق خامس '), // النص الذي سيظهر للمستخدم
-                    ),
-                  ],
-                  onChanged: (String? value) {
-                    if (value != null) {
-                      context.read<UserCubit>().setFloor(value);
-                    }
-                  },
-                  validator: (val) {
-                    if (val == null) {
-                      return "الرجاء تحديد رقم الطابق";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
-                DropdownButtonFormField<String>(
-                  hint: Text("حدد الشريجة المستهدفة"),
-
-                  items: [
-                    DropdownMenuItem<String>(
-                      value: 'family', // القيمة الفعلية التي سيتم حفظها
-                      child: Text(' عائلي'), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'single',
-                      child: Text(' فردي'),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'students',
-                      child: Text(' طلاب'),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: 'employees',
-                      child: Text(' موظفين'),
-                    ),
-                  ],
-                  onChanged: (String? value) {
-                    if (value != null) {
-                      context.read<UserCubit>().setCategoryOfRentType(value);
-                    }
-                  },
-                  validator: (val) {
-                    if (val == null) {
-                      return "الرجاء تحديد الشريحة المستهدفة";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
-                DropdownButtonFormField<int>(
-                  hint: Text(" ادخل عدد الغرف"),
-
-                  items: [
-                    DropdownMenuItem<int>(
-                      value: 1, // القيمة الفعلية التي سيتم حفظها
-                      child: Text(' غرفة واحدة'), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(value: 2, child: Text(' غرفتين')),
-                    DropdownMenuItem<int>(value: 3, child: Text(' ثلاث غرف')),
-                    DropdownMenuItem<int>(value: 4, child: Text(' اربع غرف')),
-                    DropdownMenuItem<int>(
-                      value: 5,
-                      child: Text(' خمس غرف او أكثر'),
-                    ),
-                  ],
-                  onChanged: (value) {
-                    if (value != null) {
-                      context.read<UserCubit>().setRooms_number(value);
-                    }
-                  },
-                  validator: (val) {
-                    if (val == null) {
-                      return "الرجاء تحديد عدد الغرف";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
-                DropdownButtonFormField<int>(
-                  hint: Text("الرجاء تحديد المدينة"),
-
-                  items: [
-                    DropdownMenuItem<int>(
-                      value: 1, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('دمشق المدبنة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(value: 2, child: Text('القنوات')),
-                    DropdownMenuItem<int>(
-                      value: 3, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('الميدان '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 4, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('باب توما  '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 5, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('ساروجا '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 6, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('دوما '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 7, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('التل '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 8, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('القطيفة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 9, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('حلب المدينة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 10, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('منبج '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 11, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('عزاز '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 12, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('ادلب المدينة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 13, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('معرة النعمان '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 14, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('حمص المدينة  '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 15, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('الرستن '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 16, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('حماه المدينة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 17, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('مصياف '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 18, // القيمة الفعلية التي سيتم حفظها
-                      child: Text(
-                        'اللاذقية المدينة ',
-                      ), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 19, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('جبلة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 20, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('طرطوس المدينة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 21, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('بانياس '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 22, // القيمة الفعلية التي سيتم حفظها
-                      child: Text(
-                        'دير الزور المدينة  ',
-                      ), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 23, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('الميادين '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 24, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('الرقة المدينة '), // النص الذي سيظهر للمستخدم
-                    ),
-                    DropdownMenuItem<int>(
-                      value: 25, // القيمة الفعلية التي سيتم حفظها
-                      child: Text('الثوره '), // النص الذي سيظهر للمستخدم
-                    ),
-                  ],
-                  onChanged: (int? value) {
-                    if (value != null) {
-                      context.read<UserCubit>().setCityid(value);
-                    }
-                  },
-                  validator: (val) {
-                    if (val == null) {
-                      return "الرجاء تحديد المدينة";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
                 Text(
-                  "الرجاء تحديد المرافق المتوفرة ",
+                  S.of(context).AddPhotos,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () async {
+                    final ImagePicker picker = ImagePicker();
+
+                    // استخدام pickMultiImage لاختيار عدة صور
+                    final List<XFile>? pickedFiles = await picker
+                        .pickMultiImage();
+
+                    if (pickedFiles != null && pickedFiles.isNotEmpty) {
+                      context.read<UserCubit>().setImages(pickedFiles);
+                    }
+                  },
+                  child: Container(
+                    height: 120,
+                    color: Colors.grey,
+                    child: Center(child: Text(S.of(context).ADDphoto)),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Text(
+                  S.of(context).amanty,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
                 Wrap(
                   spacing: 8.0,
                   runSpacing: 8.0,
                   children: _allAmenities.map((amenity) {
-                    // التحقق إذا كان الرقم الخاص بالوسيلة الحالية موجود في القائمة المختارة
                     final isSelected = _selectedAmenityIds.contains(amenity.id);
 
                     return FilterChip(
@@ -465,15 +157,12 @@ class _AddapartmentState extends State<Addapartment> {
                             context.read<UserCubit>().setAmenities(
                               _selectedAmenityIds,
                             );
-                            // إذا تم تحديده، أضف الرقم (id) إلى القائمة
                           } else {
                             _selectedAmenityIds.remove(amenity.id);
 
                             context.read<UserCubit>().setAmenities(
                               _selectedAmenityIds,
                             );
-
-                            // إذا تم إلغاء تحديده، احذف الرقم (id) من القائمة
                           }
                         });
                       },
@@ -482,32 +171,270 @@ class _AddapartmentState extends State<Addapartment> {
                     );
                   }).toList(),
                 ),
+                SizedBox(height: 25),
+
+                Customtextform(
+                  hint: S.of(context).tit,
+                  controller: title,
+                  onChanged: (val) {
+                    if (val.isNotEmpty) {
+                      context.read<UserCubit>().setTitle(val);
+                    }
+                  },
+                  validator: (textValue) {
+                    if (textValue == null || textValue.isEmpty) {
+                      return S.of(context).tit;
+                    } else {
+                      return null;
+                    }
+                  }, //100
+                ),
+                SizedBox(height: 20),
+
+                DropdownButtonFormField<int>(
+                  decoration: InputDecoration(labelText: S.of(context).city),
+                  items: cities
+                      .map(
+                        (c) =>
+                            DropdownMenuItem(value: c.id, child: Text(c.name)),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    if (value != null) {
+                      context.read<UserCubit>().setCityid(value);
+                    }
+                  },
+                  validator: (val) {
+                    if (val == null) {
+                      return S.of(context).validatorcity;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: price,
+                        decoration: InputDecoration(
+                          labelText: S.of(context).laprice,
+                        ),
+                        keyboardType: TextInputType.number,
+                        onChanged: (val) {
+                          context.read<UserCubit>().setPrice(val);
+                        },
+                        validator: (textValue) {
+                          if (textValue == null || textValue.isEmpty) {
+                            return S.of(context).validatorpric;
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: DropdownButtonFormField<int>(
+                        decoration: InputDecoration(labelText: 'm²'),
+                        items: [50, 100, 150, 200]
+                            .map(
+                              (s) =>
+                                  DropdownMenuItem(value: s, child: Text("$s")),
+                            )
+                            .toList(),
+                        onChanged: (val) {
+                          context.read<UserCubit>().setArea(val ?? 0);
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return S.of(context).validatorarea;
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Expanded(
+                      child: DropdownButtonFormField<String>(
+                        hint: Text(S.of(context).typeapar),
+
+                        items: [
+                          DropdownMenuItem<String>(
+                            value: S.of(context).daily,
+                            child: Text(S.of(context).daily),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: S.of(context).monthly,
+                            child: Text(S.of(context).monthly),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: S.of(context).yearly,
+                            child: Text(S.of(context).yearly),
+                          ),
+                        ],
+                        onChanged: (String? value) {
+                          if (value != null) {
+                            context.read<UserCubit>().setRentType(value);
+                          }
+                        },
+                        validator: (val) {
+                          if (val == null) {
+                            return S.of(context).typeapar;
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: DropdownButtonFormField<String>(
+                        hint: Text(S.of(context).hiiiii),
+
+                        items: [
+                          DropdownMenuItem<String>(
+                            value: 'family',
+                            child: Text(S.of(context).family),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'single',
+                            child: Text(S.of(context).single),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'students',
+                            child: Text(S.of(context).students),
+                          ),
+                          DropdownMenuItem<String>(
+                            value: 'employees',
+                            child: Text(S.of(context).employees),
+                          ),
+                        ],
+                        onChanged: (String? value) {
+                          if (value != null) {
+                            context.read<UserCubit>().setCategoryOfRentType(
+                              value,
+                            );
+                          }
+                        },
+                        validator: (val) {
+                          if (val == null) {
+                            return S.of(context).hiiiii;
+                          } else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
                 SizedBox(height: 15),
-                Custombutton(
-                  title: "الرجاء ادخال صورة ",
-                  onPressed: () async {
-                    await ImagePicker()
-                        .pickImage(source: ImageSource.camera)
-                        .then(
-                          (onValue) =>
-                              context.read<UserCubit>().setImage(onValue!),
-                        );
+
+                SizedBox(height: 20),
+                DropdownButtonFormField<String>(
+                  hint: Text(S.of(context).floor),
+
+                  items: [
+                    DropdownMenuItem<String>(
+                      value: 'land',
+                      child: Text(S.of(context).land),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'first',
+                      child: Text(S.of(context).first),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'second',
+                      child: Text(S.of(context).second),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'third',
+                      child: Text(S.of(context).third),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'fourth',
+                      child: Text(S.of(context).fourth),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: 'fifth',
+                      child: Text(S.of(context).fifth),
+                    ),
+                  ],
+                  onChanged: (String? value) {
+                    if (value != null) {
+                      context.read<UserCubit>().setFloor(value);
+                    }
+                  },
+                  validator: (val) {
+                    if (val == null) {
+                      return S.of(context).floor;
+                    } else {
+                      return null;
+                    }
                   },
                 ),
                 SizedBox(height: 15),
+
+                SizedBox(height: 15),
+                DropdownButtonFormField<int>(
+                  hint: Text(S.of(context).nroom),
+
+                  items: [
+                    DropdownMenuItem<int>(
+                      value: 1,
+                      child: Text(S.of(context).room1),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 2,
+                      child: Text(S.of(context).room2),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 3,
+                      child: Text(S.of(context).room3),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 4,
+                      child: Text(S.of(context).room4),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 5,
+                      child: Text(S.of(context).room5),
+                    ),
+                  ],
+                  onChanged: (value) {
+                    if (value != null) {
+                      context.read<UserCubit>().setRooms_number(value);
+                    }
+                  },
+                  validator: (val) {
+                    if (val == null) {
+                      return S.of(context).nroom;
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                SizedBox(height: 25),
+
                 Custombutton(
-                  title: "إضافة الشقة",
+                  title: S.of(context).Addtitl,
                   onPressed: () {
                     if (_selectedAmenityIds.isEmpty) {
                       AwesomeDialog(
                         context: context,
                         dialogType: DialogType.error,
                         animType: AnimType.rightSlide,
-                        title: 'خطأ',
-                        desc: 'الرجاء اختيار المرافق المتوفرة',
+                        title: S.of(context).Eroor,
+                        desc: S.of(context).des,
                         btnOkOnPress: () {},
                       ).show();
-                    } else if (context.read<UserCubit>().image != null) {
+                    } else if (context.read<UserCubit>().img != null) {
                       if (addApartment.currentState!.validate()) {
                         context.read<UserCubit>().addApartment();
                       }
@@ -516,8 +443,8 @@ class _AddapartmentState extends State<Addapartment> {
                         context: context,
                         dialogType: DialogType.error,
                         animType: AnimType.rightSlide,
-                        title: 'خطأ',
-                        desc: 'الرجاء إضافة صورة للشقة',
+                        title: S.of(context).Eroor,
+                        desc: S.of(context).des2,
                         btnOkOnPress: () {},
                       ).show();
                     }

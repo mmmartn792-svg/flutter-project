@@ -26,7 +26,7 @@ class Customtextform extends StatelessWidget {
         hintText: hint,
         contentPadding: EdgeInsets.symmetric(vertical: 2, horizontal: 20),
         filled: true,
-        fillColor: Colors.white,
+
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(50),
           borderSide: BorderSide(color: const Color.fromARGB(66, 100, 11, 11)),

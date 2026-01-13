@@ -1,56 +1,78 @@
 import 'package:projectq/core/api/end_ponits.dart';
 
-class Addapartmentmodele {
-  final String message;
-  final String price;
+class AddApartmentData {
+  final int idApartment;
   final String title;
+  final String price;
   final String province;
   final String city;
-  final List<int> amenities;
-  final List<String> phones;
-  final String imgUrl;
+  final List<String> amenities;
+  final String phoneOfOwner;
+  final List<String> images;
+  final String area;
+  final String categoryOfRentType;
+  final String roomsNumber;
+  final String floor;
 
-  // Constructor
-  const Addapartmentmodele({
-    required this.message,
-    required this.price,
+  const AddApartmentData({
+    required this.idApartment,
     required this.title,
+    required this.price,
     required this.province,
     required this.city,
     required this.amenities,
-    required this.phones,
-    required this.imgUrl,
+    required this.phoneOfOwner,
+    required this.images,
+    required this.area,
+    required this.categoryOfRentType,
+    required this.roomsNumber,
+    required this.floor,
   });
 
-  // دالة لإنشاء كائن من JSON (تأتي من الـ API)
-  factory Addapartmentmodele.fromJson(Map<String, dynamic> json) {
-    return Addapartmentmodele(
-      message: json[ApiKey.message] as String,
-      price: json[ApiKey.price] as String,
-      title: json[ApiKey.title] as String,
-      province: json[ApiKey.province] as String,
-      city: json[ApiKey.city] as String,
-      amenities: List<int>.from(json[ApiKey.amenities] ?? []), //
-      phones: List<String>.from(json[ApiKey.phones] ?? []),
-      imgUrl: json[ApiKey.photoOfApartment] as String,
+  factory AddApartmentData.fromJson(Map<String, dynamic> json) {
+    return AddApartmentData(
+      idApartment: json[ApiKey.apartment_id] ?? 0,
+
+      title: json[ApiKey.title] ?? '',
+      price: json[ApiKey.price] ?? '',
+      province: json[ApiKey.province] ?? '',
+      city: json[ApiKey.city] ?? '',
+      phoneOfOwner: json[ApiKey.phoneOfOwner] ?? '',
+      area: json[ApiKey.area] ?? '',
+      categoryOfRentType: json[ApiKey.categoryOfRentType] ?? '',
+      roomsNumber: json[ApiKey.rooms_number] ?? '',
+      floor: json[ApiKey.floor] ?? '',
+
+      amenities:
+          (json[ApiKey.amenities] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          [],
+      images:
+          (json[ApiKey.images] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          [],
     );
   }
+}
 
-  // دالة لتحويل الكائن إلى JSON (لإرسالها إلى الـ API)
-  Map<String, dynamic> toJson() {
-    return {
-      'message': message,
-      'price': price,
-      'title': title,
-      'province': province,
-      'city': city,
-      'amenities': amenities,
-      'phones': phones,
-    };
-  }
+class AddApartmentResponse {
+  final bool success;
+  final String message;
+  final AddApartmentData data;
 
-  @override
-  String toString() {
-    return 'ApartmentModel(message: $message, title: $title, price: $price)';
+  const AddApartmentResponse({
+    required this.success,
+    required this.message,
+    required this.data,
+  });
+
+  factory AddApartmentResponse.fromJson(Map<String, dynamic> json) {
+    return AddApartmentResponse(
+      success: json[ApiKey.success] ?? false,
+      message: json[ApiKey.message] ?? '',
+      data: AddApartmentData.fromJson(json[ApiKey.data] ?? {}),
+    );
   }
 }

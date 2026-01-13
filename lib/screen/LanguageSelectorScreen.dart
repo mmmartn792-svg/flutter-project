@@ -10,24 +10,20 @@ class LanguageSelectorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // title: Text("الرجاء اختيار لغة البرنامج "), // عنوان متعدد اللغات
-      ),
+      appBar: AppBar(),
       body: Column(
         children: [
           ListTile(
             leading: Icon(Icons.brightness_6),
-            title: Text('الوضع الليلي'),
+            title: Text(S.of(context).dark),
             trailing: Switch(
-              // watch للاستماع إلى التغييرات وتحديث الواجهة
+              activeColor: Colors.green,
               value: context.watch<ThemeCubit>().state is DarkTheme,
-              // read لاستدعاء دالة التبديل
               onChanged: (value) {
                 context.read<ThemeCubit>().toggleTheme();
               },
             ),
             onTap: () {
-              // لجعل ListTile بأكمله قابلاً للنقر
               context.read<ThemeCubit>().toggleTheme();
             },
           ),
@@ -43,17 +39,16 @@ class LanguageSelectorScreen extends StatelessWidget {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // استدعاء دالة تغيير اللغة في الـ Cubit
                     context.read<LocaleCubit>().changeLanguage('en');
                   },
-                  child: const Text('English'),
+                  child: Text('English'),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     context.read<LocaleCubit>().changeLanguage('ar');
                   },
-                  child: const Text('العربية'),
+                  child: Text('العربية'),
                 ),
               ],
             ),
