@@ -1,13 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
 
 import 'package:projectq/cache/cache_helper.dart';
 import 'package:projectq/core/api/api_consumer.dart';
 import 'package:projectq/core/api/end_ponits.dart';
-import 'package:projectq/core/errors/error_model.dart';
 import 'package:projectq/core/errors/exceptions.dart';
 import 'package:projectq/core/functions/upload_image_to_api.dart';
 import 'package:projectq/models/AddApartmentModele.dart';
@@ -402,9 +400,7 @@ class UserRepository {
     required String x,
   }) async {
     try {
-      final response = await api.post(
-        "http://10.0.2.2:8000/api/notification/${x}/read",
-      );
+      final response = await api.post("${EndPoint.notificationAll}/${x}/read");
 
       final notificationData = NotificationnotreadModel.fromJson(response);
 

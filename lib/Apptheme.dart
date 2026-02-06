@@ -4,11 +4,11 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Cairo',
     brightness: Brightness.light,
-    primarySwatch: Colors.green,
+    primarySwatch: Colors.teal,
     scaffoldBackgroundColor: Colors.white,
     cardColor: Colors.white,
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.teal,
       foregroundColor: Colors.white,
       iconTheme: IconThemeData(color: Colors.white),
     ),
@@ -17,7 +17,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     fontFamily: 'Cairo',
     brightness: Brightness.dark,
-    primarySwatch: Colors.green,
+    primarySwatch: Colors.teal,
     scaffoldBackgroundColor: Colors.grey[900],
     cardColor: Colors.grey[800],
     appBarTheme: AppBarTheme(

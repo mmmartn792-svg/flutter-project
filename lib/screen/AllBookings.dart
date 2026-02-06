@@ -47,19 +47,14 @@ class _MyBookingsPageState extends State<MyBookingsPage> {
       body: BlocConsumer<UserCubit, UserState>(
         listener: (context, state) {
           if (state is CancelBookingSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.message),
-              
-              ),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.message)));
             context.read<UserCubit>().AllBookings();
           } else if (state is CancelBookingtFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errMessage),
-              ),
-            );
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.errMessage)));
           }
         },
         builder: (context, state) {
@@ -177,7 +172,7 @@ class _MyBookingsPageState extends State<MyBookingsPage> {
     showModalBottomSheet(
       context: context,
       builder: (ctx) => Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(bottom: 55),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

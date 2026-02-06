@@ -219,7 +219,7 @@ class _FilterPageState extends State<FilterPage> {
                         },
                         child: Text(S.of(context).searche),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
+                          backgroundColor: Colors.teal,
                           minimumSize: Size(double.infinity, 50),
                         ),
                       ),
@@ -345,13 +345,19 @@ class ApartmentCard extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.favorite_border),
+                        icon:
+                            CacheHelper().getData(
+                                  key: "${apartment.idApartment}",
+                                ) ==
+                                true
+                            ? Icon(Icons.favorite, color: Colors.red.shade400)
+                            : Icon(Icons.favorite_border),
                       ),
                     ],
                   ),
                   SizedBox(height: 8),
                   Card(
-                    color: Colors.green.shade50,
+                    color: Colors.teal.shade50,
                     elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
@@ -366,7 +372,7 @@ class ApartmentCard extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.paid,
-                            color: Colors.green.shade700,
+                            color: Colors.teal.shade700,
                             size: 24,
                           ),
                           SizedBox(width: 8),
@@ -375,7 +381,7 @@ class ApartmentCard extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.green.shade900,
+                              color: Colors.teal.shade900,
                             ),
                           ),
                         ],

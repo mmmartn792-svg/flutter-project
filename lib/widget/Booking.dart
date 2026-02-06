@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:projectq/generated/l10n.dart';
@@ -18,7 +16,6 @@ class BookingCard extends StatelessWidget {
     required this.AddRating,
   }) : super(key: key);
 
-  // دالة مساعدة لإنشاء شريط الحالة بألوان مختلفة
   Widget _buildStatusChip(String status, String stauts1, context) {
     Color backgroundColor;
     Color textColor;
@@ -97,79 +94,84 @@ class BookingCard extends StatelessWidget {
         "${formatter.format(booking.startDate)} - ${formatter.format(booking.endDate)}";
     final location = "${apartment.city.name}, ${apartment.city.province.name}";
 
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    apartment.title,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 22),
+      child: Card(
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        elevation: 3,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      apartment.title,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-                _buildStatusChip(booking.status, booking.modifyStatus, context),
-              ],
-            ),
-            const SizedBox(height: 12),
+                  _buildStatusChip(
+                    booking.status,
+                    booking.modifyStatus,
+                    context,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
 
-            // تفاصيل الحجز
-            _buildDetailRow(Icons.calendar_today, dateRange),
-            _buildDetailRow(Icons.location_on, location),
-            _buildDetailRow(
-              Icons.attach_money,
-              "${apartment.price} ${apartment.priceUnit}",
-            ),
-            const SizedBox(height: 16),
+              _buildDetailRow(Icons.calendar_today, dateRange),
+              _buildDetailRow(Icons.location_on, location),
+              _buildDetailRow(
+                Icons.attach_money,
+                "${apartment.price} ${apartment.priceUnit}",
+              ),
+              const SizedBox(height: 16),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                if (booking.status.toLowerCase() ==
-                    'approved') // عرض زر التعديل فقط في حالة الانتظار
-                  TextButton.icon(
-                    onPressed: onEdit,
-                    icon: Icon(Icons.edit, size: 18),
-                    label: Text("تعديل"),
-                    style: TextButton.styleFrom(foregroundColor: Colors.blue),
-                  ),
-                const SizedBox(width: 8),
-                if (booking.status.toLowerCase() !=
-                    'cancelled') // إخفاء زر الإلغاء إذا تم الإلغاء مسبقاً
-                  TextButton.icon(
-                    onPressed: onCancel,
-                    icon: Icon(Icons.cancel_outlined, size: 18),
-                    label: Text("إلغاء"),
-                    style: TextButton.styleFrom(foregroundColor: Colors.red),
-                  ),
-                if (booking.status.toLowerCase() == 'approved')
-                  TextButton.icon(
-                    onPressed: AddRating,
-                    icon: Icon(Icons.edit, size: 18),
-                    label: Text("اضافة تقييم"),
-                    style: TextButton.styleFrom(foregroundColor: Colors.green),
-                  ),
-                const SizedBox(width: 8),
-              ],
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (booking.status.toLowerCase() == 'approved')
+                    TextButton.icon(
+                      onPressed: onEdit,
+                      icon: Icon(Icons.edit, size: 15),
+                      label: Text(S.of(context).modify),
+                      style: TextButton.styleFrom(foregroundColor: Colors.blue),
+                    ),
+                  const SizedBox(width: 5),
+                  if (booking.status.toLowerCase() != 'cancelled')
+                    TextButton.icon(
+                      onPressed: onCancel,
+                      icon: Icon(Icons.cancel_outlined, size: 15),
+                      label: Text(S.of(context).cancel),
+                      style: TextButton.styleFrom(foregroundColor: Colors.red),
+                    ),
+                  if (booking.status.toLowerCase() == 'approved')
+                    TextButton.icon(
+                      onPressed: AddRating,
+                      icon: Icon(Icons.edit, size: 15),
+                      label: Text(S.of(context).addRating),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.green,
+                      ),
+                    ),
+                  const SizedBox(width: 8),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // ويدجت مساعد لإنشاء صف من أيقونة ونص
   Widget _buildDetailRow(IconData icon, String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),

@@ -24,7 +24,7 @@ class Apartmentdetailspage extends StatefulWidget {
 }
 
 class _ApartmentdetailspageState extends State<Apartmentdetailspage> {
-  bool isFavorite = true;
+  bool isFavorite = false;
 
   late final List<Map<String, dynamic>> _reviews = [
     {
@@ -108,12 +108,20 @@ class _ApartmentdetailspageState extends State<Apartmentdetailspage> {
                       onFavorite: () {
                         setState(() {
                           isFavorite = !isFavorite;
+                          CacheHelper().saveData(
+                            key: "${widget.apartment.idApartment}",
+                            value: isFavorite,
+                          );
                         });
                         context.read<UserCubit>().favorites(
                           id1: widget.apartment.idApartment,
                         );
                       },
-                      isFavorite: isFavorite,
+                      isFavorite:
+                          CacheHelper().getData(
+                            key: "${widget.apartment.idApartment}",
+                          ) ??
+                          false,
                     ),
                   ),
                   // Content
@@ -200,10 +208,10 @@ class _ApartmentdetailspageState extends State<Apartmentdetailspage> {
                             final amenity = widget.apartment.amenities[index];
                             return Chip(
                               label: Text(amenity),
-                              backgroundColor: Colors.green.shade100,
-                              side: BorderSide(color: Colors.green.shade300),
+                              backgroundColor: Colors.teal.shade100,
+                              side: BorderSide(color: Colors.teal.shade300),
                               labelStyle: TextStyle(
-                                color: Colors.green.shade800,
+                                color: Colors.teal.shade800,
                               ),
                             );
                           },
@@ -253,7 +261,7 @@ class _ApartmentdetailspageState extends State<Apartmentdetailspage> {
                 ],
               ),
               Positioned(
-                bottom: 0,
+                bottom: 35,
                 left: 0,
                 right: 0,
                 child: Container(

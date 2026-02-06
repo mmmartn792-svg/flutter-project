@@ -99,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "View": MessageLookupByLibrary.simpleMessage("حجوزاتي"),
     "WiFi": MessageLookupByLibrary.simpleMessage("انترنت"),
+    "addRating": MessageLookupByLibrary.simpleMessage("إضافة تقييم"),
     "again": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "amanty": MessageLookupByLibrary.simpleMessage(
       "الرجاء تحديد المرافق المتوفرة ",
@@ -126,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "bookingsw": MessageLookupByLibrary.simpleMessage("طلبك قيد المراجعة"),
     "btnCancelText": MessageLookupByLibrary.simpleMessage("لا"),
     "btnOkText": MessageLookupByLibrary.simpleMessage("نعم"),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "canceleBookings": MessageLookupByLibrary.simpleMessage("إلغاء الحجز"),
     "choselan": MessageLookupByLibrary.simpleMessage(
       "الرجاء اختيار لغة البرنامج ",
@@ -161,7 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "detailbooking": MessageLookupByLibrary.simpleMessage("تفاصيل الحجز"),
     "details": MessageLookupByLibrary.simpleMessage("تفاصيل الإشعار"),
     "disagree": MessageLookupByLibrary.simpleMessage("رفض"),
-    "disapproved": MessageLookupByLibrary.simpleMessage("مرفوضة"),
+    "disapproved": MessageLookupByLibrary.simpleMessage("تم الالغاء"),
     "douma": MessageLookupByLibrary.simpleMessage("دوما"),
     "employees": MessageLookupByLibrary.simpleMessage("موظفين"),
     "end": MessageLookupByLibrary.simpleMessage("منتهي"),
@@ -203,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "message": MessageLookupByLibrary.simpleMessage("الرسالة"),
     "minute": MessageLookupByLibrary.simpleMessage("دقيقة"),
+    "modify": MessageLookupByLibrary.simpleMessage("تعديل"),
     "modifyDate": MessageLookupByLibrary.simpleMessage("تعديل تاريخ الحجز"),
     "monthly": MessageLookupByLibrary.simpleMessage("شهري"),
     "myApartments": MessageLookupByLibrary.simpleMessage("شققي"),

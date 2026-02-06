@@ -226,7 +226,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       ImagePicker()
-                          .pickImage(source: ImageSource.camera)
+                          .pickImage(source: ImageSource.gallery)
                           .then(
                             (onValue) => context
                                 .read<UserCubit>()
@@ -235,7 +235,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.teal,
                     ),
                     child: Text(
                       S.of(context).enterYourImage,
@@ -251,7 +251,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       ImagePicker()
-                          .pickImage(source: ImageSource.camera)
+                          .pickImage(source: ImageSource.gallery)
                           .then(
                             (onValue) =>
                                 context.read<UserCubit>().uplodIdfile(onValue!),
@@ -259,7 +259,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.teal,
                     ),
                     child: Text(
                       S.of(context).imagId,
@@ -272,10 +272,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
 
                   SizedBox(height: 15),
-                  state is signupLoading
-                      ? CircularProgressIndicator()
-                      : ElevatedButton(
-                          onPressed: () {
+                  ElevatedButton(
+                    onPressed: state is signupLoading
+                        ? null
+                        : () {
                             if (context.read<UserCubit>().fileP == null ||
                                 context.read<UserCubit>().fileId == null) {
                               AwesomeDialog(
@@ -295,11 +295,22 @@ class _SignupScreenState extends State<SignupScreen> {
                               }
                             }
                           },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(double.infinity, 50),
-                            backgroundColor: Colors.green,
-                          ),
-                          child: Text(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 50),
+                      backgroundColor: Colors.teal,
+                    ),
+                    child: state is SignInLoading
+                        ? SizedBox(
+                            // لتحديد حجم ثابت لدائرة التحميل
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              color: Colors
+                                  .white, // اجعل لون الدائرة متناسقًا مع الزر
+                              strokeWidth: 3,
+                            ),
+                          )
+                        : Text(
                             S.of(context).createAccount,
                             style: TextStyle(
                               color: Colors.white,
@@ -307,10 +318,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
+                  ),
                   SizedBox(height: 12),
-
-                  // 4. أداة القائمة المنسدلة لاختيار الدور
                 ],
               ),
             ),

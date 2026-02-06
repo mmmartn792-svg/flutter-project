@@ -37,7 +37,7 @@
 "choselan":"please select a language",
 "darkAndLang":"language and darke Mode",
 "masenger": "please create Owner`s account",
-"btnCancelText":"Cansel",
+"btnCancelText":"Cancel",
 "btnOkText":"Ok",
 "damas":"Damascus City",
 "qanawat":"al-Qanawt",
@@ -103,6 +103,7 @@
 ,"Alll":"All","notread":"Not Read","err":"An error occurred while fetching notifications .","message":"message","newstate":"New Status","RAting":"Rating Apartment","Stars":"How would you rate this apartment?","write":"Write your comment:"
 ,"opinion":"....Write your opinion for apartment ","comment":"please enter comment"
 ,"SendComent":"Send Comment","whatPeopleSay":"what say people","basedOn":"based On Experiences","reviews":"Number reviews"
+,"modify":"Modify","cancel":"Cancel","addRating":"Add Rating"
 
 
 

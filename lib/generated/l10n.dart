@@ -364,9 +364,9 @@ class S {
     );
   }
 
-  /// `Cansel`
+  /// `Cancel`
   String get btnCancelText {
-    return Intl.message('Cansel', name: 'btnCancelText', desc: '', args: []);
+    return Intl.message('Cancel', name: 'btnCancelText', desc: '', args: []);
   }
 
   /// `Ok`
@@ -1532,6 +1532,21 @@ class S {
   /// `Number reviews`
   String get reviews {
     return Intl.message('Number reviews', name: 'reviews', desc: '', args: []);
+  }
+
+  /// `Modify`
+  String get modify {
+    return Intl.message('Modify', name: 'modify', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Add Rating`
+  String get addRating {
+    return Intl.message('Add Rating', name: 'addRating', desc: '', args: []);
   }
 }
 

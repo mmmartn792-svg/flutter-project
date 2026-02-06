@@ -450,6 +450,7 @@ class _AddapartmentState extends State<Addapartment> {
                     }
                   },
                 ),
+                SizedBox(height: 30),
               ],
             ),
           ),

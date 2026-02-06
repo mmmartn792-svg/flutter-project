@@ -118,27 +118,36 @@ class _LoginScreenState extends State<LoginScreen> {
                         .setPasswordControllerlogin(value),
                   ),
                   SizedBox(height: 24),
-                  state is SignInLoading
-                      ? CircularProgressIndicator()
-                      : ElevatedButton(
-                          onPressed: () {
+                  ElevatedButton(
+                    onPressed: state is SignInLoading
+                        ? null
+                        : () {
                             if (formlogin.currentState!.validate()) {
                               context.read<UserCubit>().signIn();
                             }
                           },
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: Size(double.infinity, 50),
-                            backgroundColor: Colors.green,
-                          ),
-                          child: Text(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(double.infinity, 50),
+                      backgroundColor: Colors.teal,
+                    ),
+                    child: state is SignInLoading
+                        ? SizedBox(
+                            // لتحديد حجم ثابت لدائرة التحميل
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              color: Colors
+                                  .white, // اجعل لون الدائرة متناسقًا مع الزر
+                              strokeWidth: 3,
+                            ),
+                          )
+                        : Text(
                             S.of(context).titleLogin,
                             style: TextStyle(color: Colors.white),
                           ),
-                        ),
-                  SizedBox(height: 16),
-                  Center(
-                    child: Text(S.of(context).newAccountget),
-                  ), //'أو المتابعة عبر'
+                  ),
+                  SizedBox(height: 24),
+                  Center(child: Text(S.of(context).newAccountget)),
                   SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: () {

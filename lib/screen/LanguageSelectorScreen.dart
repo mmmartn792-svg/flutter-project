@@ -17,7 +17,7 @@ class LanguageSelectorScreen extends StatelessWidget {
             leading: Icon(Icons.brightness_6),
             title: Text(S.of(context).dark),
             trailing: Switch(
-              activeColor: Colors.green,
+              activeColor: Colors.teal,
               value: context.watch<ThemeCubit>().state is DarkTheme,
               onChanged: (value) {
                 context.read<ThemeCubit>().toggleTheme();

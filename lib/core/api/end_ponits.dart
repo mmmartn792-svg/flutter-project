@@ -1,5 +1,6 @@
 class EndPoint {
-  static String baseUrl = "http://10.0.2.2:8000/api/";
+  static String baseUrl =
+      "http://10.174.214.120:8000/api/"; // http://10.0.2.2:8000
 
   static String signIn = "user/login";
   static String signUp = "user/register";

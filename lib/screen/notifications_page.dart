@@ -99,13 +99,13 @@ class _NotificationsPageState extends State<NotificationsPage>
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.1),
+                    color: Colors.teal.withOpacity(0.1),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(
                     Icons.notifications_outlined,
                     size: 28,
-                    color: Colors.green,
+                    color: Colors.teal,
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -203,7 +203,7 @@ class _NotificationsPageState extends State<NotificationsPage>
           if (state is GetAllnotificationloading ||
               state is NGetAllnotificationNotredloading) {
             return const Center(
-              child: CircularProgressIndicator(color: Colors.green),
+              child: CircularProgressIndicator(color: Colors.teal),
             );
           }
 
@@ -225,7 +225,7 @@ class _NotificationsPageState extends State<NotificationsPage>
                       context.read<UserCubit>().getAllnotificationNotread();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.teal,
                     ),
                     child: Text(S.of(context).again),
                   ),
@@ -269,7 +269,7 @@ class NotificationDetailsPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
+                color: Colors.teal.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Column(
@@ -277,7 +277,7 @@ class NotificationDetailsPage extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).message,
-                    style: TextStyle(fontSize: 16, color: Colors.green),
+                    style: TextStyle(fontSize: 16, color: Colors.teal),
                   ),
                   SizedBox(height: 8),
                   Text(
@@ -293,7 +293,7 @@ class NotificationDetailsPage extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.1),
+                  color: Colors.teal.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(
@@ -301,7 +301,7 @@ class NotificationDetailsPage extends StatelessWidget {
                   children: [
                     Text(
                       S.of(context).newstate,
-                      style: TextStyle(fontSize: 16, color: Colors.green),
+                      style: TextStyle(fontSize: 16, color: Colors.teal),
                     ),
                     const SizedBox(height: 8),
                     Text(

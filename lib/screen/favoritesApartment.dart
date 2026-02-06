@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projectq/cache/cache_helper.dart';
 import 'package:projectq/cubit/user_cubit.dart';
 import 'package:projectq/generated/l10n.dart';
 import 'package:projectq/screen/apartmentDetailsPage.dart';
@@ -99,13 +100,23 @@ class _FavoritesapartmentState extends State<Favoritesapartment> {
                                       ),
                                       IconButton(
                                         onPressed: () {},
-                                        icon: const Icon(Icons.favorite_border),
+                                        icon:
+                                            CacheHelper().getData(
+                                                  key:
+                                                      "${apartment.idApartment}",
+                                                ) ==
+                                                true
+                                            ? Icon(
+                                                Icons.favorite,
+                                                color: Colors.red.shade400,
+                                              )
+                                            : Icon(Icons.favorite_border),
                                       ),
                                     ],
                                   ),
                                   const SizedBox(height: 8),
                                   Card(
-                                    color: Colors.green.shade50,
+                                    color: Colors.teal.shade50,
                                     elevation: 2,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12.0),
@@ -120,7 +131,7 @@ class _FavoritesapartmentState extends State<Favoritesapartment> {
                                         children: [
                                           Icon(
                                             Icons.paid,
-                                            color: Colors.green.shade700,
+                                            color: Colors.teal.shade700,
                                             size: 24,
                                           ),
                                           const SizedBox(width: 8),
@@ -129,7 +140,7 @@ class _FavoritesapartmentState extends State<Favoritesapartment> {
                                             style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.green.shade900,
+                                              color: Colors.teal.shade900,
                                             ),
                                           ),
                                         ],
